@@ -2,6 +2,10 @@
 
 This repository is a collection of software design principles and patterns, explained in a simple and practical way. The goal is to provide a quick reference for developers to understand and apply these concepts in their daily work.
 
+## Why?
+
+As "vibe coding" is becoming a habit, we need to take more care of quality. This repository aims to provide a structured way to learn and apply established principles and patterns to improve the quality of our software.
+
 Each principle or pattern has its own document with a detailed explanation, examples, and use cases.
 
 ## Principles and Patterns
