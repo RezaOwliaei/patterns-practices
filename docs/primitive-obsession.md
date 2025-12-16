@@ -1,5 +1,7 @@
 # Primitive Obsession (Anti-Pattern)
 
+In software engineering, an anti-pattern is a common response to a recurring problem that is usually ineffective and risks being highly counterproductive.
+
 Summary
 - Primitive Obsession is the anti-pattern of overusing primitive types (strings, numbers) instead of creating domain-specific types, leading to duplicated validation, unclear intent, and brittle code.
 

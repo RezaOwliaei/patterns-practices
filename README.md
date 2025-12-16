@@ -19,10 +19,14 @@ Here is the list of principles and patterns currently documented:
 *   [Object Invariants](docs/object-invariants.md)
 *   [Pit of Success](docs/pit-of-success.md)
 *   [Polite Object](docs/polite-object.md)
-*   [Primitive Obsession](docs/primitive-obsession.md)
 *   [Principle of Least Astonishment](docs/principle-of-least-astonishment.md)
 *   [Tell, Don't Ask](docs/tell-dont-ask.md)
 *   [Value Object](docs/value-object.md)
+
+## Anti-Patterns
+
+*   [API Pollution](docs/api-pollution.md)
+*   [Primitive Obsession](docs/primitive-obsession.md)
 
 ## Contributing
 
