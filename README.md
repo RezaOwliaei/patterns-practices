@@ -42,43 +42,66 @@ To maintain consistency across all documents, please use the following template 
 
 ### Template
 
+Use this template for each concept document to make it actionable and consistent.
+
 ```markdown
 # [Principle or Pattern Name]
 
 ## Summary
 
-A brief, one-sentence summary of the concept.
+One concise sentence capturing the essence.
 
-## Key Symptoms / Why it matters
+## Why this matters
 
-- A bulleted list of symptoms that this pattern addresses or reasons why this principle is important.
-- Keep it short and to the point.
+- Two to three bullets explaining the reasoning and impact.
 
-## How to Avoid / How to Implement
+## When to use / Use-cases
 
-A numbered list of actionable steps to avoid the anti-pattern or implement the pattern.
+- Concrete situations or signals indicating this concept applies.
 
-## Example
+## When not to use / Anti-signals
 
-A code block with a clear "before" (polluted/bad) and "after" (clean/good) example. Use TypeScript for consistency.
+- Situations where this concept is counterproductive.
 
-### Bad Example
+## How it works (conceptual overview)
+
+Two to three short paragraphs describing the mechanism and intent.
+
+## How to implement / Practical steps
+
+1. Actionable steps, API guidance, or design checklist to follow.
+2. Implementation hints (e.g., prefer factories, private constructors, discriminated unions).
+
+## Bad Example (TypeScript)
 
 ```ts
-// Code demonstrating the problem
+// Small snippet showing the common mistake
 ```
 
-### Good Example
+## Good Example (TypeScript)
 
 ```ts
-// Code demonstrating the solution
+// Small snippet showing the recommended approach
 ```
 
-## Related Principles
+## Testing guidance
 
-- A bulleted list of links to related principles or patterns within this repository.
-- Example: `[Encapsulation](encapsulation.md)`
+- What to assert in tests and important invariant checks.
+
+## Trade-offs and pitfalls
+
+- Decideable trade-offs and gotchas to watch out for.
+
+## Quick checklist
+
+- [ ] Short, actionable checklist for adopt/verify.
+
+## Related principles / Further reading
+
+- Links to other docs in this repo and short references.
 ```
+
+Replace the placeholder in each doc with this template and keep real content in the document body.
 
 ## Contributing
 

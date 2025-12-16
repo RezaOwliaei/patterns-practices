@@ -1,22 +1,36 @@
 # Primitive Obsession (Anti-Pattern)
 
-In software engineering, an anti-pattern is a common response to a recurring problem that is usually ineffective and risks being highly counterproductive.
+## Summary
 
-Summary
-- Primitive Obsession is the anti-pattern of overusing primitive types (strings, numbers) instead of creating domain-specific types, leading to duplicated validation, unclear intent, and brittle code.
+Primitive Obsession is the habit of overusing raw primitives (strings, numbers) for domain concepts instead of modeling them as domain types, leading to duplicated validation and unclear intent.
 
-Symptoms
-- Many functions take raw primitives for domain concepts (email: string, money: number).
-- Scattered validation logic and duplicated checks.
+## Why this matters
 
-TypeScript example (anti-pattern)
+- Leads to scattered validation and duplicated checks.
+- Makes intent less obvious and code more brittle.
+
+## When to use / Use-cases
+
+- Replace primitives with domain types when the value has domain-specific rules (email, money, id formats).
+
+## When not to use / Anti-signals
+
+- Throwaway scripts or small throwaway code where the cost of creating types outweighs the benefit.
+
+## How it works (concept)
+
+Introduce Value Objects or small domain types that encapsulate validation and behavior so the rest of the codebase deals with meaningful types instead of raw primitives.
+
+## Bad Example (TypeScript) ❌
+
 ```ts
 function sendInvoice(toEmail: string, amountCents: number) {
   // validate email/amount in many places
 }
 ```
 
-Refactor (use Value Objects)
+## Good Example (TypeScript) ✅
+
 ```ts
 class Email {
   private constructor(public readonly value: string) {}
@@ -30,12 +44,24 @@ class Money {
 }
 
 function sendInvoice(to: Email, amount: Money) {
-  // callers must construct AM and Email, so values are validated once
+  // callers must construct Money and Email, so values are validated once
 }
 ```
 
-Benefits of fixing
-- Centralized validation, clearer APIs, fewer bugs, and improved domain model expressiveness.
+## Testing guidance
 
-When not to refactor
-- For throwaway code or trivial scripts where overhead outweighs benefit.
+- Test the Value Object constructors and behavior; fewer tests are needed elsewhere because values are validated up-front.
+
+## Trade-offs and pitfalls
+
+- Increased type/count of small classes; balance cost vs benefit for each domain concept.
+
+## Quick checklist ✅
+
+- [ ] Is domain-specific validation centralized in a single type?
+- [ ] Are primitives replaced with Value Objects where they carry domain semantics?
+- [ ] Are Value Objects thoroughly unit-tested?
+
+## Related principles
+
+- [Value Object](value-object.md)

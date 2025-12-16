@@ -1,20 +1,35 @@
 # Polite Object (Idiom)
 
-Summary
-- A "Polite Object" is an idiom for designing objects that behave well in an OO system: they present clear, intention-revealing APIs, avoid surprising side-effects, and cooperate with callers instead of exposing internals.
+## Summary
 
-Practices
-- Keep methods small and focused.
-- Return intention-bearing types rather than raw internals.
-- Avoid exposing mutable internal structures directly.
+Polite Objects present clear, intention-revealing APIs, avoid surprising side-effects, and cooperate with callers rather than exposing internals.
 
-TypeScript example (bad)
+## Why this matters
+
+- Makes code easier to reason about and compose safely.
+- Prevents consumers from accidentally violating invariants.
+
+## When to use / Use-cases
+
+- Public-facing objects or APIs that will be used by many parts of the codebase.
+
+## When not to use / Anti-signals
+
+- Simple data carriers or DTOs where exposing data is intentional and light-weight.
+
+## How it works (concept)
+
+Design methods that express intent and avoid returning mutable internal structures. Prefer small, focused methods and intention-bearing return types.
+
+## Bad Example (TypeScript) ❌
+
 ```ts
 class Session { public data: any = {}; }
 // external code mutates session.data arbitrarily
 ```
 
-TypeScript example (polite)
+## Good Example (TypeScript) ✅
+
 ```ts
 class Session {
   private data: Record<string, unknown> = {};
@@ -26,5 +41,20 @@ class Session {
 // API speaks intent and keeps internal structure private
 ```
 
-Benefits
-- Easier reasoning, safer composition, and fewer accidental invariants violated by consumers.
+## Testing guidance
+
+- Test behavior through the public API (get/set/clear) and ensure no external mutation can change internals unexpectedly.
+
+## Trade-offs and pitfalls
+
+- Over-encapsulation for trivial cases may add unnecessary complexity.
+
+## Quick checklist ✅
+
+- [ ] Does API express intent rather than raw data access?
+- [ ] Are mutable internals protected from callers?
+- [ ] Are behaviors tested through public methods?
+
+## Related principles
+
+- [Encapsulation](encapsulation.md)

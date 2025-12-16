@@ -1,21 +1,48 @@
 # Always Valid
 
-Summary
-- The "Always Valid" pattern/principle states that objects should be constructed and mutated so they always represent a valid state. Invalid states should be unrepresentable.
+## Summary
 
-Motivation
-- Avoids runtime checks scattered across the codebase.
-- Shifts correctness to construction and domain rules.
+Objects should be constructed and mutated so they always represent a valid state; invalid states should be unrepresentable.
 
-How to enforce
-- Validate in constructors/factory functions.
-- Use private fields and only expose safe operations.
+## Why this matters
 
-TypeScript example (factory + private constructor)
+- Reduces scattered runtime checks and duplicated validation logic.
+- Makes reasoning about state simpler and tests more focused.
+- Prevents whole classes of bugs by enforcing domain rules at construction/mutation time.
+
+## When to use / Use-cases
+
+- Domain types with strong invariants (email, money, percentages).
+- Aggregates and entities where invalid state could lead to inconsistent behavior (bank accounts, orders).
+
+## When not to use / Anti-signals
+
+- Throwaway scripts or prototypes where the overhead of strict types outweighs short-term productivity.
+- When runtime constraints force accepting partially-constructed data (e.g., streaming parsers) — prefer guarded builders or Result types.
+
+## How it works (concept)
+
+Validation and guarding happen at the boundaries: constructors, factories, and mutators. Consumers must use the safe creation APIs so any instance they receive already satisfies invariants.
+
+## How to implement (practical steps)
+
+1. Prefer private constructors and factory functions for validated creation.
+2. Validate inputs early and return explicit errors (throws, Result/Either types, or Option types depending on language style).
+3. Keep mutators private or validate inside public methods so invariants cannot be broken by consumers.
+4. Use types to make invalid states unrepresentable (discriminated unions, sealed classes).
+
+## Bad Example (TypeScript) ❌
+
+```ts
+class User { constructor(public email: string) {} }
+// callers can construct User('not-an-email') and system will only fail later
+```
+
+## Good Example (TypeScript) ✅
+
 ```ts
 class Email {
   private constructor(public readonly value: string) {}
-
   static create(value: string): Email {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)) {
       throw new Error('Invalid email');
@@ -24,11 +51,11 @@ class Email {
   }
 }
 
-// consumers must use Email.create, so Email instances are always valid
 const e = Email.create('alice@example.com');
 ```
 
-TypeScript example (aggregate with invariants)
+### Aggregate example (Bank account)
+
 ```ts
 class BankAccount {
   private balance: number;
@@ -42,11 +69,23 @@ class BankAccount {
 }
 ```
 
-Benefits
-- Fewer validation sites, predictable invariants, easier reasoning and testing.
+## Testing guidance
 
-Trade-offs
-- More upfront design. Sometimes requires factory functions or discriminated unions for complex validation.
+- Unit-test factory/constructor validation paths and all public mutators.
+- Include property-based tests when ranges or combinatorial invariants exist.
 
-Notes
-- Consider Result/Option wrappers for languages or codebases that prefer non-throwing flows.
+## Trade-offs and pitfalls
+
+- Requires upfront design and may add boilerplate (factory methods or wrappers).
+- Throwing vs returning errors should follow the project's error-handling style.
+
+## Quick checklist ✅
+
+- [ ] Are invalid states prevented at construction or mutation?
+- [ ] Are public mutators validated or restricted?
+- [ ] Are there unit tests for each invariant?
+
+## Related principles
+
+- [Object Invariants](object-invariants.md)
+- [Value Object](value-object.md)

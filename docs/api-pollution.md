@@ -41,30 +41,68 @@ class PollutedReport {
 }
 ```
 
-### Clean API
+## Summary
 
-A clean approach separates concerns. The `ReportGenerator` class provides a single, high-level method, hiding the implementation details.
+API Pollution is the tendency to expose many small, poorly-named, or redundant API elements that confuse consumers and increase maintenance burden.
+
+## Why this matters
+
+- Large, unfocused public surfaces lead to more bugs and harder maintenance.
+- Consumers may rely on unstable details if the API is cluttered.
+
+## When to use / Use-cases
+
+N/A — this is an anti-pattern to avoid.
+
+## When not to use / Anti-signals
+
+- If you find many one-off helpers or unclear method names on public types, you likely have API pollution.
+
+## How it works (concept)
+
+Keep public surfaces small, name carefully, and provide focused helpers or modules rather than sprawling APIs.
+
+## How to implement (practical steps)
+
+1. Audit the public surface and remove or consolidate rarely-used APIs.
+2. Provide clear, intention-revealing names and group related behavior together.
+3. Document stability and deprecate carefully with migration guidance.
+
+## Bad Example (TypeScript) ❌
 
 ```ts
-// Internal helpers are not exported or are private
-const fetchJson = (url: string): Promise<any> => { /* ... */ };
-const parseData = (data: any): string[] => { /* ... */ };
-const formatAsCsv = (lines: string[]): string => { /* ... */ };
-
-// The class has a single, clear responsibility
-class CleanReportGenerator {
-  // One clear, high-level method
-  async generate(url: string): Promise<string> {
-    const data = await fetchJson(url);
-    const lines = parseData(data);
-    return formatAsCsv(lines);
-  }
+class Utils {
+  static parse(a: string) {}
+  static parseDate(a: string) {}
+  static parseNumber(a: string) {}
+  // many helpers with overlapping responsibilities
 }
 ```
 
-## Related Principles
+## Good Example (TypeScript) ✅
 
-- **[Encapsulation](encapsulation.md)**: Polluting an API often involves breaking encapsulation by exposing internal details.
-- **[Single Responsibility Principle](https://en.wikipedia.org/wiki/Single-responsibility_principle)**: API pollution is a direct symptom of a class or module having too many responsibilities.
-- **[Principle of Least Astonishment](principle-of-least-astonishment.md)**: A clean, minimal API is predictable, whereas a polluted one is confusing.
-- **[Pit of Success](pit-of-success.md)**: A well-designed, unpolluted API makes it easy to do the right thing and hard to do the wrong thing.
+```ts
+// expose focused modules that group related behavior
+export const DateUtils = { parse: (s: string) => new Date(s) };
+export const NumberUtils = { parse: (s: string) => Number(s) };
+```
+
+## Testing guidance
+
+- Use API usage telemetry (if available) or code search to find rarely used API surfaces for consolidation.
+
+## Trade-offs and pitfalls
+
+- Removing APIs requires a migration plan; use deprecation phases when needed.
+
+## Quick checklist ✅
+
+- [ ] Is the public API surface focused and documented?
+- [ ] Are helpers grouped by responsibility?
+- [ ] Is there a deprecation policy for cleanup?
+
+## Related principles
+
+- [Principle of Least Astonishment](principle-of-least-astonishment.md)
+
+# API Pollution

@@ -1,14 +1,29 @@
 # Pit of Success (Idiom)
 
-Summary
-- The "Pit of Success" is a design idiom that makes the correct way easy and the wrong way hard. The goal is to bias developers toward safe, maintainable choices.
+## Summary
 
-Applications
-- Frameworks, libraries, and APIs can be designed with sensible defaults and opinionated helpers.
+Design APIs so that the easiest path for users is also the correct and safe one, making mistakes less likely.
 
-TypeScript example (helpful defaults)
+## Why this matters
+
+- Reduces common errors and encourages consistent, maintainable usage.
+- Lowers onboarding friction for new users of libraries and frameworks.
+
+## When to use / Use-cases
+
+- Public libraries and framework APIs where defaults can provide robustness.
+
+## When not to use / Anti-signals
+
+- When the user base requires maximal flexibility and defaults would cause performance or semantic surprises.
+
+## How it works (concept)
+
+Provide sensible defaults and opinionated helpers so that following conventions yields correct behavior; expose opt-outs for edge cases.
+
+## Example (TypeScript)
+
 ```ts
-// small HTTP helper with sensible defaults
 type Options = { timeout?: number; headers?: Record<string,string> };
 function fetchJson(url: string, opts: Options = {}) {
   const headers = { 'Accept': 'application/json', ...(opts.headers || {}) };
@@ -19,8 +34,20 @@ function fetchJson(url: string, opts: Options = {}) {
 // consumers that follow defaults get robust behaviour; opt-in changes require explicit opts
 ```
 
-Benefits
-- Reduces class of bugs, improves API ergonomics, and encourages consistent usage.
+## Testing guidance
 
-Trade-offs
-- Opinionated APIs sometimes frustrate power users; expose escape hatches carefully.
+- Test default behavior and ensure opt-out code paths are covered.
+
+## Trade-offs and pitfalls
+
+- Opinionated defaults can annoy power users; provide clear escape hatches and document edge cases.
+
+## Quick checklist ✅
+
+- [ ] Are sensible defaults provided for common use-cases?
+- [ ] Are escape hatches available and documented?
+- [ ] Are defaults covered by tests?
+
+## Related principles
+
+- [Principle of Least Astonishment](principle-of-least-astonishment.md)

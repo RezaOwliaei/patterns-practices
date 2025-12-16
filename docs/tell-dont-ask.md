@@ -1,17 +1,28 @@
 # Tell, Don't Ask
 
-Summary
-- The "Tell, Don't Ask" principle encourages sending commands to objects (telling them what to do) rather than querying their state and making decisions externally (asking).
+## Summary
 
-Motivation
-- Keeps behavior and data together (encapsulation).
-- Prevents logic duplication across the codebase.
-- Makes code more robust by preventing external components from assuming internal representation.
+Tell, Don't Ask encourages sending commands to objects (telling them what to do) instead of querying their state and making decisions externally.
 
-When to use
-- Whenever an object can perform an operation that affects its own state.
+## Why this matters
 
-TypeScript example (anti-pattern)
+- Keeps behavior and data together, reinforcing encapsulation.
+- Reduces duplicated logic and coupling between components.
+
+## When to use / Use-cases
+
+- When an object can perform the operation that affects its state (e.g., carts, orders, aggregates).
+
+## When not to use / Anti-signals
+
+- Small utility structs or immutable value objects where querying and computing externally is fine.
+
+## How it works (concept)
+
+Expose command-like methods on the object so callers express intent (e.g., `increaseQty`) and let the object enforce its own invariants.
+
+## Bad Example (TypeScript) ❌
+
 ```ts
 class Cart {
   private items: { id: string; qty: number }[] = [];
@@ -25,7 +36,8 @@ function increaseQty(cart: Cart, id: string) {
 }
 ```
 
-TypeScript example (Tell, Don't Ask)
+## Good Example (TypeScript) ✅
+
 ```ts
 class Cart {
   private items: Map<string, number> = new Map();
@@ -47,11 +59,21 @@ cart.addItem('p1');
 cart.increaseQty('p1'); // tell the cart what to do
 ```
 
-Benefits
-- Stronger encapsulation, fewer coupling points, clearer intent.
+## Testing guidance
 
-Trade-offs
-- Requires designing richer object interfaces; may add small wrapper methods.
+- Test object commands directly and assert invariants, rather than testing external manipulations.
 
-Further reading
-- Apply with Command-like methods and aggregate roots in domain models.
+## Trade-offs and pitfalls
+
+- May require more expressive interfaces and a small number of wrapper methods; keep them intentional and focused.
+
+## Quick checklist ✅
+
+- [ ] Are state-changing operations expressed as commands on the object?
+- [ ] Are invariants enforced inside the object methods?
+- [ ] Are command methods covered by tests?
+
+## Related principles
+
+- [Encapsulation](encapsulation.md)
+- [Guardian (Invariant Protection)](guardian-invariant-protection.md)
