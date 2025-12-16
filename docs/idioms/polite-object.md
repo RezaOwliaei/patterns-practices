@@ -30,7 +30,9 @@ Design methods that express intent and avoid returning mutable internal structur
 ## Bad Example (TypeScript) ❌
 
 ```ts
-class Session { public data: any = {}; }
+class Session {
+  public data: any = {};
+}
 // external code mutates session.data arbitrarily
 ```
 
@@ -39,9 +41,15 @@ class Session { public data: any = {}; }
 ```ts
 class Session {
   private data: Record<string, unknown> = {};
-  get<T>(key: string): T | undefined { return this.data[key] as T | undefined; }
-  set(key: string, value: unknown) { this.data[key] = value; }
-  clear() { this.data = {}; }
+  get<T>(key: string): T | undefined {
+    return this.data[key] as T | undefined;
+  }
+  set(key: string, value: unknown) {
+    this.data[key] = value;
+  }
+  clear() {
+    this.data = {};
+  }
 }
 
 // API speaks intent and keeps internal structure private
@@ -63,4 +71,4 @@ class Session {
 
 ## Related principles
 
-- [Encapsulation](encapsulation.md)
+- [Encapsulation](../principles/encapsulation.md)

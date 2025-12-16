@@ -39,10 +39,12 @@ Enforce invariants at creation and mutation points; use guardians to coordinate 
 class Percentage {
   private constructor(private readonly value: number) {}
   static create(value: number) {
-    if (value < 0 || value > 100) throw new Error('percentage out of range');
+    if (value < 0 || value > 100) throw new Error("percentage out of range");
     return new Percentage(value);
   }
-  get() { return this.value; }
+  get() {
+    return this.value;
+  }
 }
 
 const p = Percentage.create(42);
@@ -66,4 +68,4 @@ const p = Percentage.create(42);
 ## Related principles
 
 - [Always Valid](always-valid.md)
-- [Guardian (Invariant Protection)](guardian-invariant-protection.md)
+- [Guardian (Invariant Protection)](../patterns/guardian-invariant-protection.md)

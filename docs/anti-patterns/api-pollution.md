@@ -1,3 +1,9 @@
+---
+category: anti-pattern
+tags: [design, api]
+title: API Pollution
+---
+
 # API Pollution
 
 ## Summary
@@ -28,9 +34,15 @@ Here, a `Report` class is responsible for fetching, parsing, and formatting data
 ```ts
 class PollutedReport {
   // Unrelated low-level methods exposed
-  fetchJson(url: string): Promise<any> { /* ... */ }
-  parseData(data: any): string[] { /* ... */ }
-  formatAsCsv(lines: string[]): string { /* ... */ }
+  fetchJson(url: string): Promise<any> {
+    /* ... */
+  }
+  parseData(data: any): string[] {
+    /* ... */
+  }
+  formatAsCsv(lines: string[]): string {
+    /* ... */
+  }
 
   // The intended "main" feature is buried
   async generateCsvReport(url: string): Promise<string> {
@@ -103,6 +115,4 @@ export const NumberUtils = { parse: (s: string) => Number(s) };
 
 ## Related principles
 
-- [Principle of Least Astonishment](principle-of-least-astonishment.md)
-
-# API Pollution
+- [Principle of Least Astonishment](../principles/principle-of-least-astonishment.md)

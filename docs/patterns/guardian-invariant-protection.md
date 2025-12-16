@@ -36,24 +36,31 @@ The guardian is the authoritative coordinator of state transitions for a group o
 ## Example (TypeScript)
 
 ```ts
-class OrderLine { constructor(public readonly sku: string, public qty: number) {} }
+class OrderLine {
+  constructor(
+    public readonly sku: string,
+    public qty: number,
+  ) {}
+}
 
 class Order {
   private lines: Map<string, OrderLine> = new Map();
 
   addLine(sku: string, qty: number) {
-    if (qty <= 0) throw new Error('invalid qty');
+    if (qty <= 0) throw new Error("invalid qty");
     const existing = this.lines.get(sku);
     if (existing) existing.qty += qty;
     else this.lines.set(sku, new OrderLine(sku, qty));
   }
 
   removeLine(sku: string) {
-    if (!this.lines.has(sku)) throw new Error('not found');
+    if (!this.lines.has(sku)) throw new Error("not found");
     this.lines.delete(sku);
   }
 
-  getTotalItems() { return Array.from(this.lines.values()).reduce((s, l) => s + l.qty, 0); }
+  getTotalItems() {
+    return Array.from(this.lines.values()).reduce((s, l) => s + l.qty, 0);
+  }
 }
 
 // `Order` is the guardian that ensures order-level invariants (non-negative qty, coherent totals)
@@ -75,5 +82,5 @@ class Order {
 
 ## Related principles
 
-- [Object Invariants](object-invariants.md)
-- [Tell, Don't Ask](tell-dont-ask.md)
+- [Object Invariants](../principles/object-invariants.md)
+- [Tell, Don't Ask](../principles/tell-dont-ask.md)

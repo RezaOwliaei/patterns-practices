@@ -47,13 +47,13 @@ Use mapped types and optional phantom keys (often typed as `never` or optional b
 
 ```ts
 // string-based phantom keys can collide and may appear at runtime
-type Capabilities = 'canRead' | 'canWrite';
+type Capabilities = "canRead" | "canWrite";
 
 type WithCaps<C extends Capabilities> = { name: string } & { [K in C]?: never };
 
-type ReadOnly = WithCaps<'canRead'>;
+type ReadOnly = WithCaps<"canRead">;
 
-const r: ReadOnly = { name: 'x', canRead: undefined } // runtime key exists; less safe
+const r: ReadOnly = { name: "x", canRead: undefined }; // runtime key exists; less safe
 ```
 
 **Symbol-based (recommended)**
@@ -66,7 +66,7 @@ type WithCapSym = { name: string } & { readonly [CAN_READ]?: true };
 
 type ReadOnlySym = WithCapSym;
 
-const r2: ReadOnlySym = { name: 'x' } // safe; no accidental runtime key
+const r2: ReadOnlySym = { name: "x" }; // safe; no accidental runtime key
 ```
 
 Using `unique symbol` reduces the risk that consumers accidentally set or rely on runtime keys and helps provide stronger nominal distinctions at the type level.
@@ -75,23 +75,23 @@ Using `unique symbol` reduces the risk that consumers accidentally set or rely o
 
 ```ts
 // encoding capabilities as runtime keys increases surface area
-const obj = { name: 'x', canRead: true, canWrite: false }
+const obj = { name: "x", canRead: true, canWrite: false };
 ```
 
 ## Good Example (TypeScript) ✅
 
 ```ts
-type Capabilities = 'canRead' | 'canWrite';
+type Capabilities = "canRead" | "canWrite";
 
 type WithCaps<C extends Capabilities> = { name: string } & { [K in C]?: never };
 
 // Type-level examples
-type ReadOnly = WithCaps<'canRead'>;
+type ReadOnly = WithCaps<"canRead">;
 
-type Writer = WithCaps<'canWrite'>;
+type Writer = WithCaps<"canWrite">;
 
 // At runtime, the object remains minimal and capabilities inform type checks
-const r: ReadOnly = { name: 'x' };
+const r: ReadOnly = { name: "x" };
 ```
 
 ## Testing guidance

@@ -40,7 +40,9 @@ Validation and guarding happen at the boundaries: constructors, factories, and m
 ## Bad Example (TypeScript) ❌
 
 ```ts
-class User { constructor(public email: string) {} }
+class User {
+  constructor(public email: string) {}
+}
 // callers can construct User('not-an-email') and system will only fail later
 ```
 
@@ -51,13 +53,13 @@ class Email {
   private constructor(public readonly value: string) {}
   static create(value: string): Email {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)) {
-      throw new Error('Invalid email');
+      throw new Error("Invalid email");
     }
     return new Email(value);
   }
 }
 
-const e = Email.create('alice@example.com');
+const e = Email.create("alice@example.com");
 ```
 
 ### Aggregate example (Bank account)
@@ -66,12 +68,20 @@ const e = Email.create('alice@example.com');
 class BankAccount {
   private balance: number;
   constructor(initialCents: number) {
-    if (initialCents < 0) throw new Error('initial must be >= 0');
+    if (initialCents < 0) throw new Error("initial must be >= 0");
     this.balance = initialCents;
   }
-  deposit(cents: number) { if (cents <= 0) throw new Error('must be positive'); this.balance += cents; }
-  withdraw(cents: number) { if (cents <= 0 || cents > this.balance) throw new Error('invalid withdraw'); this.balance -= cents; }
-  getBalance() { return this.balance; }
+  deposit(cents: number) {
+    if (cents <= 0) throw new Error("must be positive");
+    this.balance += cents;
+  }
+  withdraw(cents: number) {
+    if (cents <= 0 || cents > this.balance) throw new Error("invalid withdraw");
+    this.balance -= cents;
+  }
+  getBalance() {
+    return this.balance;
+  }
 }
 ```
 
@@ -94,4 +104,4 @@ class BankAccount {
 ## Related principles
 
 - [Object Invariants](object-invariants.md)
-- [Value Object](value-object.md)
+- [Value Object](../patterns/value-object.md)

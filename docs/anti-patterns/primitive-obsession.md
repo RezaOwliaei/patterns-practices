@@ -40,12 +40,18 @@ function sendInvoice(toEmail: string, amountCents: number) {
 ```ts
 class Email {
   private constructor(public readonly value: string) {}
-  static create(v: string) { if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) throw new Error('invalid'); return new Email(v); }
+  static create(v: string) {
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) throw new Error("invalid");
+    return new Email(v);
+  }
 }
 
 class Money {
-  constructor(public readonly cents: number, public readonly currency = 'USD') {
-    if (!Number.isInteger(cents) || cents < 0) throw new Error('invalid money');
+  constructor(
+    public readonly cents: number,
+    public readonly currency = "USD",
+  ) {
+    if (!Number.isInteger(cents) || cents < 0) throw new Error("invalid money");
   }
 }
 
@@ -70,4 +76,4 @@ function sendInvoice(to: Email, amount: Money) {
 
 ## Related principles
 
-- [Value Object](value-object.md)
+- [Value Object](../patterns/value-object.md)

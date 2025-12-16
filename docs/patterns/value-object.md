@@ -31,20 +31,23 @@ Make the type immutable, implement value-based equality, and provide behavior th
 
 ```ts
 class Money {
-  constructor(public readonly cents: number, public readonly currency: string) {}
+  constructor(
+    public readonly cents: number,
+    public readonly currency: string,
+  ) {}
 
   equals(other: Money) {
     return this.cents === other.cents && this.currency === other.currency;
   }
 
   add(other: Money) {
-    if (this.currency !== other.currency) throw new Error('currency mismatch');
+    if (this.currency !== other.currency) throw new Error("currency mismatch");
     return new Money(this.cents + other.cents, this.currency);
   }
 }
 
-const a = new Money(1000, 'USD');
-const b = a.add(new Money(250, 'USD'));
+const a = new Money(1000, "USD");
+const b = a.add(new Money(250, "USD"));
 
 console.log(a.equals(b)); // false
 ```
@@ -65,4 +68,4 @@ console.log(a.equals(b)); // false
 
 ## Related principles
 
-- [Primitive Obsession](primitive-obsession.md)
+- [Primitive Obsession](../anti-patterns/primitive-obsession.md)

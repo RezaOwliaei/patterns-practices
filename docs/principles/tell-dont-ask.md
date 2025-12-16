@@ -32,12 +32,14 @@ Expose command-like methods on the object so callers express intent (e.g., `incr
 ```ts
 class Cart {
   private items: { id: string; qty: number }[] = [];
-  getItems() { return this.items; }
+  getItems() {
+    return this.items;
+  }
 }
 
 function increaseQty(cart: Cart, id: string) {
   const items = cart.getItems();
-  const item = items.find(i => i.id === id);
+  const item = items.find((i) => i.id === id);
   if (item) item.qty += 1; // external mutation
 }
 ```
@@ -53,16 +55,18 @@ class Cart {
   }
 
   increaseQty(id: string, delta = 1) {
-    if (!this.items.has(id)) throw new Error('item not found');
+    if (!this.items.has(id)) throw new Error("item not found");
     this.items.set(id, this.items.get(id)! + delta);
   }
 
-  removeItem(id: string) { this.items.delete(id); }
+  removeItem(id: string) {
+    this.items.delete(id);
+  }
 }
 
 const cart = new Cart();
-cart.addItem('p1');
-cart.increaseQty('p1'); // tell the cart what to do
+cart.addItem("p1");
+cart.increaseQty("p1"); // tell the cart what to do
 ```
 
 ## Testing guidance
@@ -81,5 +85,5 @@ cart.increaseQty('p1'); // tell the cart what to do
 
 ## Related principles
 
-- [Encapsulation](encapsulation.md)
-- [Guardian (Invariant Protection)](guardian-invariant-protection.md)
+- [Encapsulation](../principles/encapsulation.md)
+- [Guardian (Invariant Protection)](../patterns/guardian-invariant-protection.md)

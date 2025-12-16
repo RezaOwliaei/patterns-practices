@@ -8,41 +8,39 @@ As "vibe coding" is becoming a habit, we need to take more care of quality. This
 
 Each principle or pattern has its own document with a detailed explanation, examples, and use cases.
 
-## Documentation index (categorized)
-
-To improve discoverability, documents are grouped by category. Each doc contains YAML frontmatter (`category`, `tags`) to support generation and filtering.
+## Documentation index
 
 ### Principles
 
-*   [Always-Valid Principle](docs/always-valid.md)
-*   [Encapsulation](docs/encapsulation.md)
-*   [Exhaustiveness Principle](docs/exhaustiveness-principle.md)
-*   [Object Invariants](docs/object-invariants.md)
-*   [Principle of Least Astonishment](docs/principle-of-least-astonishment.md)
-*   [Tell, Don't Ask](docs/tell-dont-ask.md)
+*   [Always-Valid Principle](docs/principles/always-valid.md)
+*   [Encapsulation](docs/principles/encapsulation.md)
+*   [Exhaustiveness Principle](docs/principles/exhaustiveness-principle.md)
+*   [Object Invariants](docs/principles/object-invariants.md)
+*   [Principle of Least Astonishment](docs/principles/principle-of-least-astonishment.md)
+*   [Tell, Don't Ask](docs/principles/tell-dont-ask.md)
 
 ### Patterns
 
-*   [Value Object](docs/value-object.md)
-*   [Guardian (Invariant Protection)](docs/guardian-invariant-protection.md)
+*   [Value Object](docs/patterns/value-object.md)
+*   [Guardian (Invariant Protection)](docs/patterns/guardian-invariant-protection.md)
 
 ### TypeScript patterns
 
-*   [Branded Types (TypeScript)](docs/branded-types.md)
-*   [Phantom Types (TypeScript)](docs/phantom-types.md)
-*   [Phantom Property (TypeScript)](docs/phantom-property.md)
-*   [Phantom Keys (TypeScript)](docs/phantom-keys.md)
+*   [Branded Types (TypeScript)](docs/ts-patterns/branded-types.md)
+*   [Phantom Types (TypeScript)](docs/ts-patterns/phantom-types.md)
+*   [Phantom Property (TypeScript)](docs/ts-patterns/phantom-property.md)
+*   [Phantom Keys (TypeScript)](docs/ts-patterns/phantom-keys.md)
 
 ### Idioms
 
-*   [Pit of Success](docs/pit-of-success.md)
-*   [Polite Object](docs/polite-object.md)
+*   [Pit of Success](docs/idioms/pit-of-success.md)
+*   [Polite Object](docs/idioms/polite-object.md)
 
 
 ## Anti-Patterns
 
-*   [API Pollution](docs/api-pollution.md)
-*   [Primitive Obsession](docs/primitive-obsession.md)
+*   [API Pollution](docs/anti-patterns/api-pollution.md)
+*   [Primitive Obsession](docs/anti-patterns/primitive-obsession.md)
 
 ## Documentation Template
 
@@ -90,15 +88,7 @@ Two to three short paragraphs describing the mechanism and intent.
 
 ## Bad Example (TypeScript)
 
-```ts
-// Small snippet showing the common mistake
-```
-
 ## Good Example (TypeScript)
-
-```ts
-// Small snippet showing the recommended approach
-```
 
 ## Testing guidance
 

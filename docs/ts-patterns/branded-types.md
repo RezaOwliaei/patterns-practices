@@ -54,7 +54,7 @@ export type UserId = string & { readonly [USER_ID]: true };
 
 // safe factory
 export function createUserId(s: string): UserId {
-  if (!/^u_\d+$/.test(s)) throw new Error('invalid user id');
+  if (!/^u_\d+$/.test(s)) throw new Error("invalid user id");
   return s as UserId;
 }
 
@@ -63,7 +63,7 @@ function deleteUser(userId: UserId) {
   // userId must be created via createUserId()
 }
 
-const id = createUserId('u_42');
+const id = createUserId("u_42");
 deleteUser(id);
 // deleteUser('u_42'); // Type error: string is not assignable to UserId
 ```
@@ -90,6 +90,6 @@ deleteUser(id);
 
 ## Related principles
 
-- [Value Object](value-object.md) — for cases where runtime safety or added behavior is desirable
-- [Primitive Obsession](primitive-obsession.md)
-- [Always Valid](always-valid.md)
+- [Value Object](../patterns/value-object.md) — for cases where runtime safety or added behavior is desirable
+- [Primitive Obsession](../anti-patterns/primitive-obsession.md)
+- [Always Valid](../principles/always-valid.md)

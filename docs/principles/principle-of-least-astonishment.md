@@ -31,7 +31,9 @@ Prefer intuitive defaults, consistent naming, and predictable side-effects. When
 
 ```ts
 // surprising API (mutates global state silently)
-function addToCache(key: string, value: any) { globalCache[key] = value; }
+function addToCache(key: string, value: any) {
+  globalCache[key] = value;
+}
 ```
 
 ## Good Example (TypeScript) ✅
@@ -59,4 +61,4 @@ function withAddedCache(cache: Record<string, any>, key: string, value: any) {
 
 ## Related principles
 
-- [Pit of Success](pit-of-success.md)
+- [Pit of Success](../idioms/pit-of-success.md)

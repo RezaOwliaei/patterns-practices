@@ -30,9 +30,9 @@ Provide sensible defaults and opinionated helpers so that following conventions 
 ## Example (TypeScript)
 
 ```ts
-type Options = { timeout?: number; headers?: Record<string,string> };
+type Options = { timeout?: number; headers?: Record<string, string> };
 function fetchJson(url: string, opts: Options = {}) {
-  const headers = { 'Accept': 'application/json', ...(opts.headers || {}) };
+  const headers = { Accept: "application/json", ...(opts.headers || {}) };
   const timeout = opts.timeout ?? 5000;
   // perform fetch with defaults (omitted implementation)
 }
@@ -56,4 +56,4 @@ function fetchJson(url: string, opts: Options = {}) {
 
 ## Related principles
 
-- [Principle of Least Astonishment](principle-of-least-astonishment.md)
+- [Principle of Least Astonishment](../principles/principle-of-least-astonishment.md)

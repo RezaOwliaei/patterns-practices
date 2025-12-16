@@ -56,7 +56,9 @@ export function createMeter(n: number): Meter {
 }
 
 // usage
-function addMeters(a: Meter, b: Meter) { return createMeter(a + b) }
+function addMeters(a: Meter, b: Meter) {
+  return createMeter(a + b);
+}
 ```
 
 Using a `unique symbol` brand gives you stronger nominal safety across modules compared to plain phantom markers while still incurring no runtime overhead.
@@ -65,7 +67,9 @@ Using a `unique symbol` brand gives you stronger nominal safety across modules c
 
 ```ts
 // mixing units is easy with plain numbers
-function addMeters(a: number, b: number) { return a + b }
+function addMeters(a: number, b: number) {
+  return a + b;
+}
 ```
 
 ## Good Example (TypeScript) ✅
@@ -73,13 +77,19 @@ function addMeters(a: number, b: number) { return a + b }
 ```ts
 // phantom marker approach
 type Phantom<T> = { readonly __phantom?: T };
-export type Meter = number & Phantom<'Meter'>;
-export type Second = number & Phantom<'Second'>;
+export type Meter = number & Phantom<"Meter">;
+export type Second = number & Phantom<"Second">;
 
-function createMeter(n: number): Meter { return n as Meter }
-function createSecond(n: number): Second { return n as Second }
+function createMeter(n: number): Meter {
+  return n as Meter;
+}
+function createSecond(n: number): Second {
+  return n as Second;
+}
 
-function addMeters(a: Meter, b: Meter) { return createMeter(a + b) }
+function addMeters(a: Meter, b: Meter) {
+  return createMeter(a + b);
+}
 
 const m = createMeter(3);
 const s = createSecond(5);
@@ -105,4 +115,4 @@ const s = createSecond(5);
 ## Related principles
 
 - [Branded Types (TypeScript)](branded-types.md)
-- [Primitive Obsession](primitive-obsession.md)
+- [Primitive Obsession](../anti-patterns/primitive-obsession.md)

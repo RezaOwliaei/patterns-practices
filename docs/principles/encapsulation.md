@@ -39,7 +39,12 @@ Expose behaviors (methods with clear intent) instead of raw internal state. Keep
 ## Bad Example (TypeScript) ❌
 
 ```ts
-class Rectangle { constructor(public width: number, public height: number) {} }
+class Rectangle {
+  constructor(
+    public width: number,
+    public height: number,
+  ) {}
+}
 // callers can mutate fields directly and assume representation
 ```
 
@@ -47,9 +52,17 @@ class Rectangle { constructor(public width: number, public height: number) {} }
 
 ```ts
 class Rectangle {
-  constructor(private width: number, private height: number) {}
-  area() { return this.width * this.height; }
-  scale(factor: number) { this.width *= factor; this.height *= factor; }
+  constructor(
+    private width: number,
+    private height: number,
+  ) {}
+  area() {
+    return this.width * this.height;
+  }
+  scale(factor: number) {
+    this.width *= factor;
+    this.height *= factor;
+  }
 }
 
 const r = new Rectangle(3, 4);
@@ -75,5 +88,5 @@ r.scale(2);
 
 ## Related principles
 
-- [Polite Object](polite-object.md)
+- [Polite Object](../idioms/polite-object.md)
 - [Always Valid](always-valid.md)

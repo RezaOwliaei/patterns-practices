@@ -46,10 +46,20 @@ Add a property that is only present in the type system (often optional, `readonl
 // recommended approach
 declare const USER_BRAND: unique symbol;
 
-interface User { id: string; name: string; readonly [USER_BRAND]?: true }
-interface Admin { id: string; name: string; readonly [USER_BRAND]?: false }
+interface User {
+  id: string;
+  name: string;
+  readonly [USER_BRAND]?: true;
+}
+interface Admin {
+  id: string;
+  name: string;
+  readonly [USER_BRAND]?: false;
+}
 
-function isUser(u: User | Admin): u is User { return (u as any)[USER_BRAND] !== false }
+function isUser(u: User | Admin): u is User {
+  return (u as any)[USER_BRAND] !== false;
+}
 ```
 
 **Why `unique symbol`?**
@@ -61,8 +71,14 @@ function isUser(u: User | Admin): u is User { return (u as any)[USER_BRAND] !== 
 
 ```ts
 // two seemingly identical types — easy to mix up
-interface User { id: string; name: string }
-interface Admin { id: string; name: string }
+interface User {
+  id: string;
+  name: string;
+}
+interface Admin {
+  id: string;
+  name: string;
+}
 ```
 
 ## Good Example (TypeScript) ✅
@@ -70,10 +86,20 @@ interface Admin { id: string; name: string }
 ```ts
 declare const USER_BRAND: unique symbol;
 
-interface User { id: string; name: string; readonly [USER_BRAND]?: true }
-interface Admin { id: string; name: string; readonly [USER_BRAND]?: false }
+interface User {
+  id: string;
+  name: string;
+  readonly [USER_BRAND]?: true;
+}
+interface Admin {
+  id: string;
+  name: string;
+  readonly [USER_BRAND]?: false;
+}
 
-function isUser(u: User | Admin): u is User { return (u as any)[USER_BRAND] !== false }
+function isUser(u: User | Admin): u is User {
+  return (u as any)[USER_BRAND] !== false;
+}
 ```
 
 > Note: Keep phantom properties out of runtime code — use them for type-level discrimination only.
