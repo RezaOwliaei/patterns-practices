@@ -28,53 +28,58 @@ Here is the list of principles and patterns currently documented:
 *   [API Pollution](docs/api-pollution.md)
 *   [Primitive Obsession](docs/primitive-obsession.md)
 
+## Documentation Template
+
+To maintain consistency across all documents, please use the following template when creating new principle or pattern documents.
+
+### Instructions
+
+1.  Create a new markdown file in the `docs/` directory (e.g., `docs/new-pattern.md`).
+2.  Use the template below as a starting point.
+3.  Fill in each section with relevant information about the principle or pattern.
+4.  Keep explanations concise and provide clear, practical code examples.
+5.  Add a link to the new document in the main `README.md` file under the appropriate section.
+
+### Template
+
+```markdown
+# [Principle or Pattern Name]
+
+## Summary
+
+A brief, one-sentence summary of the concept.
+
+## Key Symptoms / Why it matters
+
+- A bulleted list of symptoms that this pattern addresses or reasons why this principle is important.
+- Keep it short and to the point.
+
+## How to Avoid / How to Implement
+
+A numbered list of actionable steps to avoid the anti-pattern or implement the pattern.
+
+## Example
+
+A code block with a clear "before" (polluted/bad) and "after" (clean/good) example. Use TypeScript for consistency.
+
+### Bad Example
+
+```ts
+// Code demonstrating the problem
+```
+
+### Good Example
+
+```ts
+// Code demonstrating the solution
+```
+
+## Related Principles
+
+- A bulleted list of links to related principles or patterns within this repository.
+- Example: `[Encapsulation](encapsulation.md)`
+```
+
 ## Contributing
 
-Contributions are welcome! If you want to add a new principle or pattern, or improve an existing one, please open an issue or submit a pull request.
-
-## TODO
-
-Here is a list of principles and patterns that are planned to be added to this repository:
-
-*   **SOLID Principles:**
-    *   [ ] Single Responsibility Principle (SRP)
-    *   [ ] Open/Closed Principle (OCP)
-    *   [ ] Liskov Substitution Principle (LSP)
-    *   [ ] Interface Segregation Principle (ISP)
-    *   [ ] Dependency Inversion Principle (DIP)
-*   **GRASP Patterns:**
-    *   [ ] Information Expert
-    *   [ ] Creator
-    *   [ ] Controller
-    *   [ ] Low Coupling
-    *   [ ] High Cohesion
-    *   [ ] Polymorphism
-    *   [ ] Pure Fabrication
-    *   [ ] Indirection
-    *   [ ] Protected Variations
-*   **Other Patterns:**
-    *   [ ] Command and Query Responsibility Segregation (CQRS)
-    *   [ ] Event Sourcing
-    *   [ ] Factory Method Pattern
-    *   [ ] Abstract Factory Pattern
-    *   [ ] Builder Pattern
-    *   [ ] Prototype Pattern
-    *   [ ] Singleton Pattern
-    *   [ ] Adapter Pattern
-    *   [ ] Bridge Pattern
-    *   [ ] Composite Pattern
-    *   [ ] Decorator Pattern
-    *   [ ] Facade Pattern
-    *   [ ] Flyweight Pattern
-    *   [ ] Proxy Pattern
-    *   [ ] Chain of Responsibility Pattern
-    *   [ ] Command Pattern
-    *   [ ] Interpreter Pattern
-    *   [ ] Iterator Pattern
-    *   [ ] Mediator Pattern
-    *   [ ] Memento Pattern
-    *   [ ] Observer Pattern
-    *   [ ] State Pattern
-    *   [ ] Strategy Pattern
-    *   [ ] Template Method Pattern
-    *   [ ] Visitor Pattern
+Contributions are welcome! If you want to add a new principle or pattern, or improve an existing one, please open an issue or submit a pull request. Before adding a new principle or pattern, please check the [TODO list](todo.md) to see if it's already planned.
