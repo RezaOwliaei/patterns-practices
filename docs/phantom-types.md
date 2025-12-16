@@ -1,3 +1,9 @@
+---
+category: ts-pattern
+tags: [typescript, types]
+title: Phantom Types (TypeScript)
+---
+
 # Phantom Types (TypeScript)
 
 ## Summary

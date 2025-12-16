@@ -1,3 +1,9 @@
+---
+category: pattern
+tags: [design, types]
+title: Value Object (VO) Pattern
+---
+
 # Value Object (VO) Pattern
 
 ## Summary

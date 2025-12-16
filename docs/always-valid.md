@@ -1,3 +1,9 @@
+---
+category: principle
+tags: [design, safety]
+title: Always Valid
+---
+
 # Always Valid
 
 ## Summary

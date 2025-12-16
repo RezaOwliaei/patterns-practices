@@ -1,3 +1,9 @@
+---
+category: principle
+tags: [design, safety]
+title: Object Invariants
+---
+
 # Object Invariants
 
 ## Summary

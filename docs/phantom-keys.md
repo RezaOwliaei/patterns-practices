@@ -1,3 +1,9 @@
+---
+category: ts-pattern
+tags: [typescript, types]
+title: Phantom Keys (TypeScript)
+---
+
 # Phantom Keys (TypeScript)
 
 ## Summary

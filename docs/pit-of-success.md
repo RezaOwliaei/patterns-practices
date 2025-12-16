@@ -1,3 +1,9 @@
+---
+category: idiom
+tags: [api, ergonomics]
+title: Pit of Success (Idiom)
+---
+
 # Pit of Success (Idiom)
 
 ## Summary

@@ -1,3 +1,9 @@
+---
+category: ts-pattern
+tags: [typescript, types]
+title: Phantom Property (TypeScript)
+---
+
 # Phantom Property (TypeScript)
 
 ## Summary

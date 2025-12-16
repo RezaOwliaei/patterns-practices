@@ -1,3 +1,9 @@
+---
+category: ts-pattern
+tags: [typescript, types]
+title: Branded Types (TypeScript)
+---
+
 # Branded Types (TypeScript)
 
 ## Summary

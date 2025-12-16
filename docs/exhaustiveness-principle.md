@@ -1,3 +1,9 @@
+---
+category: principle
+tags: [design, types]
+title: Exhaustiveness Principle
+---
+
 # Exhaustiveness Principle
 
 ## Summary

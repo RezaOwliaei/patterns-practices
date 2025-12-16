@@ -1,3 +1,9 @@
+---
+category: principle
+tags: [design]
+title: Encapsulation
+---
+
 # Encapsulation
 
 ## Summary

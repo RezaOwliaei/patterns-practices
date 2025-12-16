@@ -1,3 +1,9 @@
+---
+category: principle
+tags: [design, encapsulation]
+title: Tell, Don't Ask
+---
+
 # Tell, Don't Ask
 
 ## Summary

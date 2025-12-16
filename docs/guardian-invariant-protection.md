@@ -1,3 +1,9 @@
+---
+category: pattern
+tags: [ddd, aggregates]
+title: Guardian (Invariant Protection)
+---
+
 # Guardian (Invariant Protection)
 
 ## Summary

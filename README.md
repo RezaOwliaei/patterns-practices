@@ -8,24 +8,36 @@ As "vibe coding" is becoming a habit, we need to take more care of quality. This
 
 Each principle or pattern has its own document with a detailed explanation, examples, and use cases.
 
-## Principles and Patterns
+## Documentation index (categorized)
 
-Here is the list of principles and patterns currently documented:
+To improve discoverability, documents are grouped by category. Each doc contains YAML frontmatter (`category`, `tags`) to support generation and filtering.
+
+### Principles
 
 *   [Always-Valid Principle](docs/always-valid.md)
 *   [Encapsulation](docs/encapsulation.md)
 *   [Exhaustiveness Principle](docs/exhaustiveness-principle.md)
-*   [Guardian (Invariant Protection)](docs/guardian-invariant-protection.md)
 *   [Object Invariants](docs/object-invariants.md)
-*   [Pit of Success](docs/pit-of-success.md)
-*   [Polite Object](docs/polite-object.md)
 *   [Principle of Least Astonishment](docs/principle-of-least-astonishment.md)
 *   [Tell, Don't Ask](docs/tell-dont-ask.md)
+
+### Patterns
+
 *   [Value Object](docs/value-object.md)
+*   [Guardian (Invariant Protection)](docs/guardian-invariant-protection.md)
+
+### TypeScript patterns
+
 *   [Branded Types (TypeScript)](docs/branded-types.md)
 *   [Phantom Types (TypeScript)](docs/phantom-types.md)
 *   [Phantom Property (TypeScript)](docs/phantom-property.md)
 *   [Phantom Keys (TypeScript)](docs/phantom-keys.md)
+
+### Idioms
+
+*   [Pit of Success](docs/pit-of-success.md)
+*   [Polite Object](docs/polite-object.md)
+
 
 ## Anti-Patterns
 

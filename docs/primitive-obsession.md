@@ -1,3 +1,9 @@
+---
+category: anti-pattern
+tags: [design]
+title: Primitive Obsession (Anti-Pattern)
+---
+
 # Primitive Obsession (Anti-Pattern)
 
 ## Summary

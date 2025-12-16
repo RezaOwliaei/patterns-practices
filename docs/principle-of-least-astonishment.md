@@ -1,3 +1,9 @@
+---
+category: principle
+tags: [design, ux]
+title: Principle of Least Astonishment
+---
+
 # Principle of Least Astonishment
 
 ## Summary

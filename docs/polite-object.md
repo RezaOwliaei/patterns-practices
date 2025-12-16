@@ -1,3 +1,9 @@
+---
+category: idiom
+tags: [design]
+title: Polite Object (Idiom)
+---
+
 # Polite Object (Idiom)
 
 ## Summary
