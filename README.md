@@ -22,6 +22,10 @@ Here is the list of principles and patterns currently documented:
 *   [Principle of Least Astonishment](docs/principle-of-least-astonishment.md)
 *   [Tell, Don't Ask](docs/tell-dont-ask.md)
 *   [Value Object](docs/value-object.md)
+*   [Branded Types (TypeScript)](docs/branded-types.md)
+*   [Phantom Types (TypeScript)](docs/phantom-types.md)
+*   [Phantom Property (TypeScript)](docs/phantom-property.md)
+*   [Phantom Keys (TypeScript)](docs/phantom-keys.md)
 
 ## Anti-Patterns
 
